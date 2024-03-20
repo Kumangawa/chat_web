@@ -1,30 +1,52 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import ChannelList from "./components/ChannelList.vue"
+import MessageList from "./components/MessageList.vue"
+
+const apiLink = "https://supsi-ticket.cloudns.org/supsi-chat/bff/channels"
+let messageListComponentRef = null // Riferimento al componente MessageList
+const handleChannelSelected = () => {
+  if (messageListComponentRef) {
+    messageListComponentRef.loadData() // Richiama loadData di MessageList
+  }
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div id="app">
+    <div class="container">
+      <div class="channel-list">
+        <ChannelList :apiLink="apiLink" @channelSelected="handleChannelSelected" />
+      </div>
+      <div class="message-list">
+        <MessageList ref="messageListComponentRef" :apiLink="apiLink" />
+      </div>
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.container {
+  display: flex;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.channel-header {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.channel-list {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px; /* Aggiunge uno spazio tra i due elenchi */
+}
+
+.message-list {
+  flex: 2;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 </style>
+
