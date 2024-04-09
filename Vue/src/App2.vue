@@ -2,17 +2,17 @@
 import Chat from "./components/Chat.vue"
 export default {
   components: {
-    Chat1: Chat
+    Chat2: Chat
   }
 }
 </script>
 
 <script setup>
-const firstUser = "Alex Petralli";
+const secondUser = "Paolo Aquino";
 </script>
 
 <template>
-  <div id="app">
-    <Chat1 :userName="firstUser" />
+  <div id="app2">
+    <Chat2 :userName="secondUser" />
   </div>
 </template>

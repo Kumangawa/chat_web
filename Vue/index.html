@@ -1,13 +1,23 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
-</html>
+<style>
+
+    /* Styling for the container */
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Divide il container in due colonne di larghezza uguale */
+        gap: 20px; /* Spazio tra le colonne */
+        align-items: center;
+    }
+
+    /* Styling for each box */
+    .box {
+        height: 1200px; /* Altezza dell'iframe pari all'altezza del contenitore */
+        width: 100%;
+        border: 1px solid #ccc;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <iframe src="index1.html" class="box"></iframe>
+    <iframe src="index2.html" class="box"></iframe>
+</div>

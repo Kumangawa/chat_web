@@ -7,7 +7,6 @@ const props = defineProps({
   apiLink: String
 })
 
-console.log(props.apiLink)
 
 const emit = defineEmits(['channelSelected'])
 
@@ -21,7 +20,6 @@ onMounted(async () => {
   try {
     const response = await fetch(props.apiLink)
     store.apiLink = props.apiLink;
-    //store.selectedapiLink= response;
     const data = await response.json()
     channels.value = data.map(channel => ({
       id: channel.id,
@@ -53,13 +51,14 @@ console.log(channels)
 .channel-header {
   font-weight: bold;
   margin-bottom: 10px;
+  font-size: 24px;
 }
 
 .channel-items {
+  font-size: 24px;
   display: flex;
-  flex-direction: column; /* Imposta la disposizione verticale */
+  flex-direction: column;
 }
 
-/* Stili per i singoli canali rimossi per brevità */
 </style>
 
