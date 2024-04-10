@@ -91,13 +91,17 @@ const createMessage = async (newMessageBody, fileAttachment) => {
   }
 }
 const handleSearch = () => {
-  if (!store.searchMessage.trim() || store.searchMessage === '') {
-    filteredMessages.value = messages.value
+  const searchQuery = store.searchMessage.trim().toLowerCase();
+  if (!searchQuery) {
+    filteredMessages.value = messages.value;
   } else {
-    filteredMessages.value = messages.value.filter(message => message.body.includes(store.searchMessage.trim()) || message.author.includes(store.searchMessage.trim())
-    )
+    filteredMessages.value = messages.value.filter(message => {
+      const body = (message.body || '').toLowerCase();
+      const author = (message.author || '').toLowerCase();
+      return body.includes(searchQuery) || author.includes(searchQuery);
+    });
   }
-}
+};
 function handleMessage(value){
   console.log('From the child:', value);
 }
