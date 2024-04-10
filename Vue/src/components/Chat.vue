@@ -55,6 +55,7 @@ const messageCallback = (message) => {
     messageListComponentRef.waitLoadData(store.channelId);
   } else {
     console.log(jsonData.channel)
+    store.channelId = jsonData.channel;
     channelName = document.getElementById(jsonData.channel).innerHTML;
     showToast(jsonData.body, 'info');
   }
