@@ -13,6 +13,8 @@ const props = defineProps({ userName: String })
 onMounted(() => {
   console.log("props.userName: ", props.userName);
   store.userName = props.userName;
+  store.channelId = 1;
+  store.selectedChannelName = "Channel 1";
 });
 
 const apiLink = "https://supsi-ticket.cloudns.org/supsi-chat/bff/channels"
@@ -55,7 +57,6 @@ const messageCallback = (message) => {
     messageListComponentRef.waitLoadData(store.channelId);
   } else {
     console.log(jsonData.channel)
-    store.channelId = jsonData.channel;
     channelName = document.getElementById(jsonData.channel).innerHTML;
     showToast(jsonData.body, 'info');
   }
